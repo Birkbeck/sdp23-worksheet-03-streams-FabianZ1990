@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,7 +17,9 @@ public class Outline {
   public static void question1() {
     List<String> words = getList();
     System.out.println("1: ");
-    // YOUR CODE
+    getList()
+            .stream()
+            .forEach(s -> System.out.println("  " + s));
   }
 
   // Repeat this problem but without two spaces in front of each word.
@@ -25,7 +28,9 @@ public class Outline {
   public static void question2() {
     List<String> words = getList();
     System.out.println("2: ");
-    // YOUR CODE
+    getList()
+            .stream()
+            .forEach(System.out::println);
   }
 
   // For each of the following lambda expressions (see Question 5 in Worksheet 2),
@@ -39,7 +44,23 @@ public class Outline {
   public static void question3() {
     List<String> words = getList();
     System.out.println("3:");
-    // YOUR CODE
+    List<String> nL1 = getList()
+            .stream()
+            .filter(s -> s.length() < 4)
+            .collect(Collectors.toList());
+    System.out.println(nL1);
+
+    List<String> nL2 = getList()
+            .stream()
+            .filter(s -> s.contains("b"))
+            .collect(Collectors.toList());
+    System.out.println(nL2);
+
+    List<String> nL3 = getList()
+            .stream()
+            .filter(s -> (s.length() % 2) == 0)
+            .collect(Collectors.toList());
+    System.out.println(nL3);
   }
 
 
@@ -54,7 +75,23 @@ public class Outline {
   public static void question4() {
     List<String> words = getList();
     System.out.println("4:");
-    // YOUR CODE
+    List<String> nL1 = getList()
+            .stream()
+            .map(s -> s + "!")
+            .collect(Collectors.toList());
+    System.out.println(nL1);
+
+    List<String> nL2 = getList()
+            .stream()
+            .map(s -> s.replace("i", "eye"))
+            .collect(Collectors.toList());
+    System.out.println(nL2);
+
+    List<String> nL3 = getList()
+            .stream()
+            .map(s -> s.toUpperCase())
+            .collect(Collectors.toList());
+    System.out.println(nL3);
   }
 
 
@@ -66,7 +103,23 @@ public class Outline {
   public static void question5() {
     List<String> words = getList();
     System.out.println("5a:");
-    // YOUR CODE
+    Optional<String> nL1 = getList()
+            .stream()
+            .filter(s->s.length() < 4)
+            .filter(s -> s.contains("e"))
+            .map(s -> s.toUpperCase())
+            .findFirst();
+    System.out.println(nL1.get());
+
+    System.out.println("5b:");
+    Optional<String> nL2 = getList()
+            .stream()
+            .filter(s->s.length() < 4)
+            .filter(s -> s.contains("q"))
+            .map(s -> s.toUpperCase())
+            .findFirst();
+    System.out.println(nL2.get());
+
   }
 
 
@@ -120,6 +173,9 @@ public class Outline {
 
   public static void main(String... args) { // varargs alternative to String[]
     question1();
-
+    question2();
+    question3();
+    question4();
+    question5();
   }
 }
