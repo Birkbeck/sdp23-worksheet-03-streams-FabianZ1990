@@ -143,7 +143,11 @@ public class Outline {
   public static void question7() {
     List<String> words = getList();
     System.out.println("7:");
-    // YOUR CODE
+    String returnString = getList()
+            .stream()
+            .map(s -> s.toUpperCase())
+            .reduce("", (s,e) -> s + e);
+    System.out.println(returnString);
   }
 
 
@@ -155,7 +159,10 @@ public class Outline {
   public static void question8() {
     List<String> words = getList();
     System.out.println("8:");
-    // YOUR CODE
+    String returnString = getList()
+            .stream()
+            .reduce("", (s,e) -> s.toUpperCase() + e.toUpperCase());
+    System.out.println(returnString);
   }
 
   // (*) Produce a String that is all the words concatenated together, but
@@ -166,7 +173,10 @@ public class Outline {
   public static void question9() {
     List<String> words = getList();
     System.out.println("9:");
-    // YOUR CODE
+    String returnString = getList()
+            .stream()
+            .collect(Collectors.joining(","));
+    System.out.println(returnString);
   }
 
   // CONTINUE WITH THE REST OF THE QUESTIONS
@@ -177,5 +187,8 @@ public class Outline {
     question3();
     question4();
     question5();
+    question7();
+    question8();
+    question9();
   }
 }
