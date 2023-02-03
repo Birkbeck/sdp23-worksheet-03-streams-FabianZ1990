@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -11,6 +13,11 @@ public class Outline {
     return List.of("hi", "bat", "ear", "hello", "iguana",
             "beaver", "winterland", "elephant", "eye", "qi");
   }
+
+  public static Integer[] getIntegerArray() {
+    return new Integer[] { 1, 3, 8 };
+  }
+
 
   // Loop through the words and print each one on a separate line,
   // with two spaces in front of each word.
@@ -179,6 +186,45 @@ public class Outline {
     System.out.println(returnString);
   }
 
+  public static void question12() {
+    List<Integer> nums = Arrays.asList(getIntegerArray());
+    System.out.println("12:");
+    List <Integer> nums2 = nums
+            .stream()
+            .map(s -> s*s)
+            .collect(Collectors.toList());
+    System.out.println(nums2);
+  }
+
+  public static void question13() {
+    List<Integer> nums = Arrays.asList(getIntegerArray());
+    List<Integer> nums2 = Arrays.asList(getIntegerArray());
+    System.out.println("13:");
+    List <List<Integer>>  out = nums
+            .stream()
+            .flatMap(a -> nums2
+                    .stream()
+                    .flatMap(b -> Stream.of(Arrays.asList(a, b))))
+            .collect(Collectors.toList());
+
+    System.out.println(out);;
+  }
+
+  public static void question14() {
+    List<Integer> nums = Arrays.asList(getIntegerArray());
+    List<Integer> nums2 = Arrays.asList(getIntegerArray());
+    System.out.println("14:");
+    List <List<Integer>>  out = nums
+            .stream()
+            .flatMap(a -> nums2
+                    .stream()
+                    .flatMap(b -> Stream.of(Arrays.asList(a, b))))
+            .collect(Collectors.toList());
+  }
+
+
+
+
   // CONTINUE WITH THE REST OF THE QUESTIONS
 
   public static void main(String... args) { // varargs alternative to String[]
@@ -190,5 +236,9 @@ public class Outline {
     question7();
     question8();
     question9();
+    question12();
+    question13();
+    question14();
+
   }
 }
